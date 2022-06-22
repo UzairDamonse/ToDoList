@@ -1,0 +1,72 @@
+/* CSS Reset */
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  position: fixed;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+ul li {
+  list-style: none;
+  margin: 1.5rem;
+}
+
+ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+}
+
+a:hover {
+  background-color: rgba(207, 194, 199, 0.5);
+}
+
+.toggle {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  display: none;
+}
+
+@media (max-width: 550px) {
+  .toggle {
+    display: flex;
+  }
+
+  ul {
+    flex-direction: column;
+    position: relative;
+    top: -100vh;
+    transition: all 0.7s ease-in;
+  }
+
+  .menu {
+    cursor: pointer;
+    z-index: 10000;
+  }
+
+  .active {
+    display: flex;
+    top: 0vh;
+  }
+}
