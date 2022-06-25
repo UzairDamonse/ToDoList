@@ -3,8 +3,7 @@ submitButton.addEventListener("click", () => {
   alert("The form has been submitted");
 });
 
-const itemContainer = document.getElementById("taskBorder"),
-  saveIndex = document.getElementById("saveIndex");
+const itemContainer = document.getElementById("taskBorder");
 
 let items = [
   {
@@ -22,7 +21,7 @@ function showItems(items) {
     itemContainer.innerHTML += `
         <div 
           id="itemContainer"
-          class="d-flex justify-content-between align-items-center m-4 border w-75 col-md-12"
+          class="d-flex justify-content-between align-items-center m-3 border w-75 col-md-12"
         >
           <input type="checkbox" name="completed" id="completed" class="ms-3" />
           <h4 id="description">${item.description}</h4>
@@ -71,7 +70,7 @@ function editTask(id) {
 
 const filteredTasks = (e) => {
   const Filter = e.target.value;
-
+  description = document.querySelector("form input");
   const filterByName = items.sort((a, b) => {
     if (a.description.toLowerCase() < b.description.toLowerCase()) {
       return -1;
