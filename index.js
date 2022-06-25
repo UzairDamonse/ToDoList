@@ -5,14 +5,16 @@ submitButton.addEventListener("click", () => {
 
 const itemContainer = document.getElementById("taskBorder");
 
-let items = [
-  {
-    id: 1,
-    description: "add task",
-    dateCreated: Date(),
-    completed: false,
-  },
-];
+let items = JSON.parse(localStorage.getItem("Items"))
+  ? JSON.parse(localStorage.getItem("Items"))
+  : [
+      {
+        id: 1,
+        description: "add task",
+        dateCreated: Date(),
+        completed: false,
+      },
+    ];
 
 function showItems(items) {
   itemContainer.innerHTML = "";
