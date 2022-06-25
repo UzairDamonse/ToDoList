@@ -1,30 +1,54 @@
-let ul = document.getElementById("list");
+const submitForm = document.getElementById("submit");
+submitForm.addEventListener("click", () => {
+  alert("Form successfully submitted");
+});
 
-function collapse() {
-  ul.classList.toggle("active");
-}
+const description = document.getElementById("description").value,
+  addTask = document.getElementById("addTask"),
+  saveTask = document.getElementById("saveToDo"),
+  itemContainer = document.getElementById("taskBorder"),
+  saveIndex = document.getElementById("saveIndex");
 
-const itemContainer = document.getElementById("body-container");
-const items = JSON.parse(localStorage.getItem("items"))
-  ? JSON.parse(localStorage.getItem("items"))
-  : [];
+let items = [];
 
-function removeItem(event) {
-  let tasks = Array.from(JSON.parse(localStorage.getItem("items")));
-  items.forEach((task) => {
-    if (task.task === event.parentNode.children[1].value) {
-      // Delete
-      items.splice(items.indexOf(task), 1);
-    }
-  });
-  localStorage.setItem("items", JSON.stringify(items));
-  event.parentElement.remove();
-}
+addTask.addEventListener("click", (e) => {
+  let toDo = localStorage.getItem("toDo");
+  if (toDo === null) {
+    items = [];
+  } else {
+    items = JSON.parse(toDo);
+  }
+
+  items.push(description);
+  description.value = "";
+  localStorage.setItem("toDO", JSON.stringify(items));
+  showItems(items);
+});
 
 function showItems(items) {
-  if (localStorage.getItem("items") == null) return;
+  let toDo = localStorage.getItem("toDo");
+  if (toDo === null) {
+    items = [];
+  } else {
+    items = JSON.parse(toDo);
+  }
 
-  let items = Array.from(JSON.parse(localStorage.getItem("items")));
+  itemContainer.innerHTML = "";
+  items.forEach((item, ind) => {
+    itemContainer.innerHTML += `
+        <div
+          id="itemContainer"
+          class="d-flex justify-content-between align-items-center m-4 border w-75"
+        >
+          <input type="checkbox" name="completed" id="completed" class="ms-3" />
+          <h4 id="description">${item.description}</h4>
+          <div>
+            <i class="fa-solid fa-pencil" onclick='edit(${ind})'></i>
+            <i class="fa-solid fa-ban me-3" onclick='deleteTask(${ind})'></i>
+          </div>
+        </div>
 
-  tasks.forEach((task) => {});
+    `;
+  });
 }
+console.log(showItems(items));

@@ -14,14 +14,60 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="event.preventDefault();">
+              <input
+                type="text"
+                id="description"
+                placeholder="Description of task"
+                name="description"
+              />
+              <input type="hidden" id="saveIndex" name="saveIndex" />
+
+              <button id="addTask ev">Add</button>
+              <button style="display: none" id="saveToDo">Edit To Do</button>
+
+              <button id="submit" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Container -->
 
     <div id="body-container" class="container">
       <div id="header" class="d-flex justify-content-around">
-        <button class="p-2">Add a task</button>
+        <button
+          type="button"
+          class="btn btn-primary p-2"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Add a task
+        </button>
         <h1 id="title">To do list</h1>
         <button class="p-2">Sort tasks</button>
       </div>
+      <div id="taskBorder" class="d-flex justify-content-center"></div>
     </div>
 
     <script
