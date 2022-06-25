@@ -34,7 +34,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form onsubmit="event.preventDefault();">
+            <form onsubmit="event.preventDefault(); addTask()">
               <input
                 type="text"
                 id="description"
@@ -42,10 +42,7 @@
                 name="description"
               />
               <input type="hidden" id="saveIndex" name="saveIndex" />
-
-              <button id="addTask ev">Add</button>
               <button style="display: none" id="saveToDo">Edit To Do</button>
-
               <button id="submit" type="submit">Submit</button>
             </form>
           </div>
@@ -65,9 +62,15 @@
           Add a task
         </button>
         <h1 id="title">To do list</h1>
-        <button class="p-2">Sort tasks</button>
+        <select name="sortTasks" id="sortTasks" onchange="filteredTasks()">
+          <option value="none">None</option>
+          <option value="nameAcsending">Name Acsending</option>
+          <option value="nameDescsending">Name Descsending</option>
+          <option value="dateAcsending">Created Date Acsending</option>
+          <option value="dateDescsending">Created Date Descsending</option>
+        </select>
       </div>
-      <div id="taskBorder" class="d-flex justify-content-center"></div>
+      <div id="taskBorder" class="d-flex justify-content-center row"></div>
     </div>
 
     <script
